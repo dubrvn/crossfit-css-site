@@ -375,7 +375,8 @@ h1, h2, h3, h4, h5, h6 {
 	color: var(--color-light);
 }
 
-.input::placeholder {
+.input::placeholder,
+select.input:invalid {
 	color:var(--color-light-gray);
 }
 
@@ -387,6 +388,18 @@ h1, h2, h3, h4, h5, h6 {
 	color: var(--color-dark);
 	background-color: var(--color-light-gray);
 	outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .button {
@@ -807,6 +820,104 @@ h1, h2, h3, h4, h5, h6 {
 	scroll-snap-align: start;
 }
 
+.calculate {
+	padding-block: 146px;
+	background-color: var(--color-dark-alt);
+}
+
+.calculate-inner {
+	display: flex;
+	align-items: center;
+	column-gap: 36px;
+}
+
+.calculate-body {
+	flex-grow: 1;
+	max-width: 627px;
+}
+
+.calculate-title:not(:last-child) {
+	margin-bottom: 16px;
+}
+
+.calculate-description:not(:last-child) {
+	margin-bottom: 30px;
+	max-width: 385px;
+}
+
+.calculate-form-body {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 18px 30px;
+}
+
+.calculate-input.wide {
+	grid-column: -1 / 1;
+}
+
+.calculate-form-body:not(:last-child) {
+	margin-bottom: 26px;
+}
+
+.calculate-table-wrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 610px;
+}
+
+.calculate-table-wrapper::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	translate: -50% -50%;
+	width: 100%;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background-color: var(--color-dark);
+}
+
+.calculate-table {
+	position: relative;
+	border-collapse: collapse;
+}
+
+.calculate-table :is(td, th) {
+	padding-right: 30px;
+}
+
+.calculate-table :is(td, th):not(:first-child) {
+	padding-left: 30px;
+}
+
+.calculate-table :is(td, th):not(:last-child) {
+	border-right: 1px solid var(--color-light-gray);
+}
+
+.calculate-table tbody td {
+	border-top: 1px solid var(--color-light-gray);
+}
+
+.calculate-table th {
+	padding-block: 20px;
+	text-align: left;
+	color: var(--color-light);
+	text-transform: uppercase;
+}
+
+.calculate-table td {
+	padding-block: 14px;
+}
+
+.calculate-table tfoot td {
+	padding-top: 33px;
+	padding-bottom: 0;
+	color: var(--color-light);
+}
+
 @media (max-width: 1919px) {
 	.motivation-card-image {
 		margin-block: -20px;
@@ -866,6 +977,30 @@ h1, h2, h3, h4, h5, h6 {
 
 	.family-image {
 		height: 360px;
+	}
+
+	.calculate {
+		padding-block: 100px;
+	}
+
+	.calculate-inner {
+		column-gap: 20px;
+	}
+
+	.calculate-form-body {
+		grid-template-columns: 1fr;
+	}
+
+	.calculate-form-button {
+		width: 100%;
+	}
+
+	.calculate-table :is(td, th) {
+		padding-block: 10px;
+	}
+
+	.calculate-table tfoot td {
+		padding-top: 10px;
 	}
 }
 
@@ -967,5 +1102,18 @@ h1, h2, h3, h4, h5, h6 {
 
 	.family-image {
 		height: 180px;
+	}
+
+	.calculate {
+		padding-block: 60px;
+	}
+
+	.calculate-inner {
+		flex-direction: column;
+		row-gap: 40px;
+	}
+
+	.calculate-table-wrapper::before {
+		display: none;
 	}
 }
